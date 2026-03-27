@@ -1,0 +1,27 @@
+@media print {
+  .print\:hidden {
+    display: none !important;
+  }
+  .print\:block {
+    display: block !important;
+  }
+  .page-break {
+    page-break-after: always;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  nav, .print\:hidden {
+    display: none !important;
+  }
+  .diagram-container {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  * {
+    border-color: #e5e5e5 !important;
+  }
+}
