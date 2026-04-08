@@ -42,7 +42,7 @@ export default function DiagramView() {
             Nueva conversion
           </button>
           <button
-            onClick={() => window.print()}
+            onClick={() => globalThis.print()}
             className="px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 transition-all duration-200 shadow-lg shadow-violet-500/25"
           >
             Imprimir
@@ -55,7 +55,7 @@ export default function DiagramView() {
         <div className="bg-yellow-50 dark:bg-yellow-950/30 text-yellow-700 dark:text-yellow-400 p-4 rounded-xl mb-6 text-sm border border-yellow-200 dark:border-yellow-900">
           <strong>Advertencias:</strong>
           <ul className="list-disc ml-4 mt-1">
-            {data.errors.map((err, i) => <li key={i}>{err}</li>)}
+            {data.errors.map((err) => <li key={err}>{err}</li>)}
           </ul>
         </div>
       )}
@@ -80,8 +80,8 @@ export default function DiagramView() {
       {/* Content */}
       {activeTab === 'source' ? (
         <div className="space-y-4">
-          {data.sources?.map((src, i) => (
-            <div key={i} className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden">
+          {data.sources?.map((src) => (
+            <div key={src.filename} className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden">
               <div className="bg-neutral-50 dark:bg-neutral-800 px-5 py-3 text-sm font-medium border-b border-neutral-200 dark:border-neutral-700">
                 {src.filename}
               </div>

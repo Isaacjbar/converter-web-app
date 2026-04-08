@@ -88,8 +88,9 @@ export default function Upload() {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Drop zone */}
-        <div
-          className={`relative border-2 border-dashed rounded-2xl p-10 text-center transition-all duration-200 cursor-pointer
+        <label
+          htmlFor="file-upload"
+          className={`relative border-2 border-dashed rounded-2xl p-10 text-center transition-all duration-200 cursor-pointer block
             ${dragActive
               ? 'border-violet-500 bg-violet-50 dark:bg-violet-950/20'
               : 'border-neutral-300 dark:border-neutral-700 hover:border-violet-400 dark:hover:border-violet-600 bg-white dark:bg-neutral-900'
@@ -97,9 +98,9 @@ export default function Upload() {
           onDragOver={(e) => { e.preventDefault(); setDragActive(true) }}
           onDragLeave={() => setDragActive(false)}
           onDrop={handleDrop}
-          onClick={() => inputRef.current?.click()}
         >
           <input
+            id="file-upload"
             ref={inputRef}
             type="file"
             multiple
@@ -116,13 +117,13 @@ export default function Upload() {
             Arrastra archivos .java o .zip aqui
           </p>
           <p className="text-neutral-400 text-sm mt-1">o haz clic para seleccionar</p>
-        </div>
+        </label>
 
         {/* File list */}
         {files.length > 0 && (
           <div className="space-y-2">
             {files.map((f, i) => (
-              <div key={i} className="flex items-center justify-between bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-4 py-3 rounded-xl">
+              <div key={`${f.name}-${f.size}`} className="flex items-center justify-between bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-4 py-3 rounded-xl">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center">
                     <span className="text-violet-600 dark:text-violet-400 text-xs font-bold">

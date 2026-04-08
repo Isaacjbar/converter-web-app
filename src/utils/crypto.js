@@ -3,7 +3,7 @@ const KEY_HEX = import.meta.env.VITE_AES_KEY
 function hexToBytes(hex) {
   const bytes = new Uint8Array(hex.length / 2)
   for (let i = 0; i < hex.length; i += 2) {
-    bytes[i / 2] = parseInt(hex.slice(i, i + 2), 16)
+    bytes[i / 2] = Number.parseInt(hex.slice(i, i + 2), 16)
   }
   return bytes
 }
@@ -22,7 +22,7 @@ async function getKey() {
 function bytesToBase64(bytes) {
   let binary = ''
   for (let i = 0; i < bytes.byteLength; i++) {
-    binary += String.fromCharCode(bytes[i])
+    binary += String.fromCodePoint(bytes[i])
   }
   return btoa(binary)
 }
@@ -31,7 +31,7 @@ function base64ToBytes(b64) {
   const binary = atob(b64)
   const bytes = new Uint8Array(binary.length)
   for (let i = 0; i < binary.length; i++) {
-    bytes[i] = binary.charCodeAt(i)
+    bytes[i] = binary.codePointAt(i)
   }
   return bytes
 }

@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import pako from 'pako'
 
 function encode6bit(b) {
-  if (b < 10) return String.fromCharCode(48 + b)
+  if (b < 10) return String.fromCodePoint(48 + b)
   b -= 10
-  if (b < 26) return String.fromCharCode(65 + b)
+  if (b < 26) return String.fromCodePoint(65 + b)
   b -= 26
-  if (b < 26) return String.fromCharCode(97 + b)
+  if (b < 26) return String.fromCodePoint(97 + b)
   b -= 26
   if (b === 0) return '-'
   if (b === 1) return '_'
@@ -34,6 +35,14 @@ function encodePlantUML(text) {
     }
   }
   return result
+}
+
+PlantUMLRenderer.propTypes = {
+  code: PropTypes.string,
+}
+
+PlantUMLRenderer.defaultProps = {
+  code: null,
 }
 
 export default function PlantUMLRenderer({ code }) {

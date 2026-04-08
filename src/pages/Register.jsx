@@ -59,29 +59,29 @@ export default function Register() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">Nombre</label>
-                <input name="first_name" value={form.first_name} onChange={handleChange} required className={inputClass} placeholder="Juan" />
+                <label htmlFor="reg-first-name" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">Nombre</label>
+                <input id="reg-first-name" name="first_name" value={form.first_name} onChange={handleChange} required className={inputClass} placeholder="Juan" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">Apellido</label>
-                <input name="last_name" value={form.last_name} onChange={handleChange} required className={inputClass} placeholder="Perez" />
+                <label htmlFor="reg-last-name" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">Apellido</label>
+                <input id="reg-last-name" name="last_name" value={form.last_name} onChange={handleChange} required className={inputClass} placeholder="Perez" />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">Usuario</label>
-              <input name="username" value={form.username} onChange={handleChange} required className={inputClass} placeholder="juanperez" />
+              <label htmlFor="reg-username" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">Usuario</label>
+              <input id="reg-username" name="username" value={form.username} onChange={handleChange} required className={inputClass} placeholder="juanperez" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">Correo electronico</label>
-              <input type="email" name="email" value={form.email} onChange={handleChange} required className={inputClass} placeholder="tu@email.com" />
+              <label htmlFor="reg-email" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">Correo electronico</label>
+              <input id="reg-email" type="email" name="email" value={form.email} onChange={handleChange} required className={inputClass} placeholder="tu@email.com" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">Contrasena</label>
-              <input type="password" name="password" value={form.password} onChange={handleChange} required minLength={6} className={inputClass} placeholder="••••••" />
+              <label htmlFor="reg-password" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">Contrasena</label>
+              <input id="reg-password" type="password" name="password" value={form.password} onChange={handleChange} required minLength={6} className={inputClass} placeholder="••••••" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">Confirmar contrasena</label>
-              <input type="password" name="password2" value={form.password2} onChange={handleChange} required minLength={6} className={inputClass} placeholder="••••••" />
+              <label htmlFor="reg-password2" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1.5">Confirmar contrasena</label>
+              <input id="reg-password2" type="password" name="password2" value={form.password2} onChange={handleChange} required minLength={6} className={inputClass} placeholder="••••••" />
             </div>
             <button
               type="submit"

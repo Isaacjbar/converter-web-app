@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect, useMemo } from 'react'
+import PropTypes from 'prop-types'
 import api from './api'
 
 const AuthContext = createContext(null)
@@ -41,6 +42,12 @@ export function AuthProvider({ children }) {
     setUser(null)
   }
 
+  // useMemo must be called before any conditional returns (Rules of Hooks)
+  const contextValue = useMemo(
+    () => ({ user, login, register, logout }),
+    [user] // eslint-disable-line react-hooks/exhaustive-deps
+  )
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -50,10 +57,14 @@ export function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout }}>
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   )
+}
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export function useAuth() {
