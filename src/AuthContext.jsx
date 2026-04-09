@@ -31,12 +31,7 @@ export function AuthProvider({ children }) {
     setUser(me.data)
   }
 
-  const register = async (formData) => {
-    await api.post('auth/register/', formData)
-    await login(formData.email, formData.password)
-  }
-
-  const logout = () => {
+const logout = () => {
     localStorage.removeItem('access_token')
     localStorage.removeItem('refresh_token')
     setUser(null)
@@ -44,7 +39,7 @@ export function AuthProvider({ children }) {
 
   // useMemo must be called before any conditional returns (Rules of Hooks)
   const contextValue = useMemo(
-    () => ({ user, login, register, logout }),
+    () => ({ user, login, logout }),
     [user] // eslint-disable-line react-hooks/exhaustive-deps
   )
 
